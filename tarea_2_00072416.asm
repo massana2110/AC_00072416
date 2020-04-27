@@ -29,12 +29,20 @@ mov bx, 2d ;inicia la serie
 mov cx, 10d
 mov ax, 2h
 mov di, 0d
+
 karanavairus: 
     mul bx
     mov [di+210h], al
     inc di
+    cmp ax, 255d 
+    ja karanavairus2
     loop karanavairus
 
+karanavairus2:
+    mov [di+210h], ah
+    inc di
+    jmp karanavairus
+    
 ;Desarrollo Ejercicio 3
 
 int 20h 
