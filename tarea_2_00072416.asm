@@ -16,22 +16,30 @@ div cl
 
 ;loop para escribir en memoria dinamicamente
 mov di, 0d ;di: apuntador para contar
-mov cx, [length]
+mov cx, 11d
+mov bx, [length]
 move:
     mov bh, [comment+di]
     mov [di+200h], bh
     inc di
     loop move
 
-    int 20h ; finaliza ejecucion 
-
-comment db "Me recupero"
-length equ $-comment
 ;Desarrollo Ejercicio 2
-
+mov bx, 2d ;inicia la serie
+mov cx, 10d
+mov ax, 2h
+mov di, 0d
+karanavairus: 
+    mul bx
+    mov [di+210h], al
+    inc di
+    loop karanavairus
 
 ;Desarrollo Ejercicio 3
 
+int 20h 
 
-
+section .data
+    comment db "Me recupero"
+    length equ $-comment
 
